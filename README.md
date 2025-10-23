@@ -1,4 +1,4 @@
-HotelFlow
+# HotelFlow
 Um moderno Sistema de Gerenciamento de Hotel (PMS) web-based, construído com Django e React.
 
 Este repositório contém o código-fonte do "HotelFlow", um projeto de PMS V1.0 focado em cobrir o ciclo de vida completo do hóspede: da Reserva ao Check-out.
@@ -59,43 +59,67 @@ PostgreSQL em execução
 1. Configurando o Backend (Django)
 Assumindo que o backend está na pasta /backend:
 
+Navegue até a pasta do backend:
+
 Bash
 
-# 1. Navegue até a pasta do backend
 cd backend/
+Crie e ative um ambiente virtual:
 
-# 2. Crie e ative um ambiente virtual
+Bash
+
+# Linux/macOS
 python -m venv venv
-source venv/bin/activate  # (ou .\venv\Scripts\activate no Windows)
+source venv/bin/activate
 
-# 3. Instale as dependências
+# Windows
+python -m venv venv
+.\venv\Scripts\activate
+Instale as dependências:
+
+Bash
+
 pip install -r requirements.txt
+Configure as variáveis de ambiente: (Copie .env.example para .env e preencha com seus dados do PostgreSQL)
 
-# 4. Configure as variáveis de ambiente
-# (Copie .env.example para .env e preencha com seus dados do PostgreSQL)
+Bash
+
 cp .env.example .env
-# Edite o arquivo .env com suas credenciais do banco
+Depois, edite o arquivo .env com suas credenciais do banco.
 
-# 5. Rode as migrações do banco
+Rode as migrações do banco:
+
+Bash
+
 python manage.py migrate
+Crie um superusuário (para a Gerente "Maria"):
 
-# 6. Crie um superusuário (para a Gerente "Maria")
+Bash
+
 python manage.py createsuperuser
+Inicie o servidor do backend:
 
-# 7. Inicie o servidor do backend
+Bash
+
 python manage.py runserver
-# O backend estará rodando em http://localhost:8000
+O backend estará rodando em http://localhost:8000
+
 2. Configurando o Frontend (React)
 Assumindo que o frontend está na pasta /frontend:
 
+Em um NOVO terminal, navegue até a pasta do frontend:
+
 Bash
 
-# 1. Em um NOVO terminal, navegue até a pasta do frontend
 cd frontend/
+Instale as dependências:
 
-# 2. Instale as dependências
+Bash
+
 npm install
+Inicie o servidor de desenvolvimento:
 
-# 3. Inicie o servidor de desenvolvimento
+Bash
+
 npm start
-# O frontend estará rodando em http://localhost:3000
+O frontend estará rodando em http://localhost:3000
