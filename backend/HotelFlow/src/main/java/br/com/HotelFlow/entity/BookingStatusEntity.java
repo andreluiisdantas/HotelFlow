@@ -11,8 +11,9 @@ public class BookingStatusEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_booking_status;
+    @Column(name = "id_booking_status")
+    private Long id;
 
-    @Column(nullable = false, unique = true, length = 255)
+    @Column(name = "status", nullable = false, unique = true, length = 255)
     private String status;
 }
