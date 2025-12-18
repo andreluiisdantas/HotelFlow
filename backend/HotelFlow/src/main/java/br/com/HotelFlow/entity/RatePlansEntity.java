@@ -15,7 +15,7 @@ public class RatePlansEntity {
     @Column(name = "id_rate_plan")
     private Long id;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "room_type", nullable = false)
     private RoomTypeEntity roomType;
 
