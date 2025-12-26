@@ -1,4 +1,4 @@
-package br.com.HotelFlow.entity;
+package br.com.HotelFlow.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 @Table(name = "RatePlans")
 @Getter @Setter
 @NoArgsConstructor
-public class RatePlansEntity {
+public class RatePlansModel {
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
@@ -17,7 +17,7 @@ public class RatePlansEntity {
 
     @ManyToOne
     @JoinColumn(name = "room_type", nullable = false)
-    private RoomTypeEntity roomType;
+    private RoomTypeModel roomType;
 
     @Column(name = "name", nullable = false, length = 255)
     private String name;

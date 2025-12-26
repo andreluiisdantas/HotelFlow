@@ -1,9 +1,9 @@
 package br.com.HotelFlow.repository;
 
-import br.com.HotelFlow.entity.BookingEntity;
+import br.com.HotelFlow.model.BookingModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface BookingInterface extends JpaRepository<BookingEntity, Long> {
+public interface BookingRepository extends JpaRepository<BookingModel, Long> {
 }

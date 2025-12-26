@@ -1,4 +1,4 @@
-package br.com.HotelFlow.entity;
+package br.com.HotelFlow.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 @Table(name = "FolioTransaction")
 @Getter @Setter
 @NoArgsConstructor
-public class FolioTransactionEntity {
+public class FolioTransactionModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +18,7 @@ public class FolioTransactionEntity {
 
     @ManyToOne
     @JoinColumn(name = "folio", nullable = false)
-    private FolioEntity folio;
+    private FolioModel folio;
 
     @Column(name = "amount", nullable = false, precision = 10, scale = 2)
     private BigDecimal amount;

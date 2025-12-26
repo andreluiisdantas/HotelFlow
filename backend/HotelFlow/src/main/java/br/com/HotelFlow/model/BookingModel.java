@@ -1,4 +1,4 @@
-package br.com.HotelFlow.entity;
+package br.com.HotelFlow.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @Table(name = "Booking")
 @Getter @Setter
 @NoArgsConstructor
-public class BookingEntity {
+public class BookingModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,11 +19,11 @@ public class BookingEntity {
 
     @ManyToOne
     @JoinColumn(name = "room", nullable = false)
-    private RoomEntity room;
+    private RoomModel room;
 
     @ManyToOne
     @JoinColumn(name = "guest", nullable = false)
-    private GuestEntity guest;
+    private GuestModel guest;
 
     @Column(name = "start_date", nullable = false)
     private LocalDate startDate;
@@ -33,19 +33,19 @@ public class BookingEntity {
 
     @ManyToOne
     @JoinColumn(name = "rate_plan", nullable = false)
-    private RatePlansEntity ratePlan;
+    private RatePlansModel ratePlan;
 
     @Column(name = "total_price", nullable = false, precision = 10, scale = 2)
     private BigDecimal totalPrice;
 
     @ManyToOne
     @JoinColumn(name = "booking_status", nullable = false)
-    private BookingStatusEntity bookingStatus;
+    private BookingStatusModel bookingStatus;
 
     @ManyToOne
     @JoinColumn(name = "responsible", nullable = false)
-    private UserEntity responsible;
+    private UserModel responsible;
 
     @Column(name = "description", columnDefinition = "TEXT")
-    private String dscription;
+    private String description;
 }

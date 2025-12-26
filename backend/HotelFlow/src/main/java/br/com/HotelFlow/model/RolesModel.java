@@ -1,4 +1,4 @@
-package br.com.HotelFlow.entity;
+package br.com.HotelFlow.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -7,7 +7,7 @@ import lombok.*;
 @Table(name = "Roles")
 @Getter @Setter
 @NoArgsConstructor
-public class RolesEntity {
+public class RolesModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

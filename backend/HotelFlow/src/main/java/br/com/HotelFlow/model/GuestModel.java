@@ -1,5 +1,6 @@
-package br.com.HotelFlow.entity;
+package br.com.HotelFlow.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDate;
@@ -8,7 +9,7 @@ import java.time.LocalDate;
 @Table(name = "Guest")
 @Getter @Setter
 @NoArgsConstructor
-public class GuestEntity {
+public class GuestModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +25,7 @@ public class GuestEntity {
     @Column(name = "cpf", nullable = false, unique = true, length = 255)
     private String cpf;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "date_birth", nullable = false)
     private LocalDate dateBirth;
 

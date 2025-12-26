@@ -1,19 +1,20 @@
-package br.com.HotelFlow.entity;
+package br.com.HotelFlow.model;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "RoomStatus")
+@Table(name = "StatusFolio")
 @Getter @Setter
 @NoArgsConstructor
-public class RoomStatusEntity {
+public class StatusFolioModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_room_status")
+    @Column(name = "id_status_folio")
     private Long id;
 
-    @Column(name = "status", nullable = false, unique = true, length = 255)
+    @Column(name = "status", nullable = false, length = 255)
     private String status;
+
 }

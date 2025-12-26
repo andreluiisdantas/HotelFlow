@@ -1,4 +1,4 @@
-package br.com.HotelFlow.entity;
+package br.com.HotelFlow.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -7,7 +7,7 @@ import lombok.*;
 @Table(name = "Room")
 @Getter @Setter
 @NoArgsConstructor
-public class RoomEntity {
+public class RoomModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,11 +16,11 @@ public class RoomEntity {
 
     @ManyToOne
     @JoinColumn(name = "room_type", nullable = false)
-    private RoomTypeEntity roomType;
+    private RoomTypeModel roomType;
 
     @ManyToOne
     @JoinColumn(name = "status", nullable = false)
-    private RoomStatusEntity roomStatus;
+    private RoomStatusModel roomStatus;
 
     @Column(name = "door_code", unique = true, nullable = false, length = 255)
     private String doorCode;

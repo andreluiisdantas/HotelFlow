@@ -1,13 +1,13 @@
-package br.com.HotelFlow.entity;
+package br.com.HotelFlow.model;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "User")
+@Table(name = "Users")
 @Getter @Setter
 @NoArgsConstructor
-public class UserEntity {
+public class UserModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,7 +16,7 @@ public class UserEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_role", nullable = false)
-    private RolesEntity role;
+    private RolesModel role;
 
     @Column(name = "name", nullable = false, length = 255)
     private String name;
