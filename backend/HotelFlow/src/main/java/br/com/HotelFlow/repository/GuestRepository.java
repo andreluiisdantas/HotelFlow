@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface GuestRepository extends JpaRepository<GuestModel, Long> {
+    boolean existsByCpf(String cpf);
+    boolean existsByRg(String rg);
 }
