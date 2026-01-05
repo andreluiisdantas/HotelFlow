@@ -4,6 +4,7 @@ import br.com.HotelFlow.dto.guest.GuestRequestDTO;
 import br.com.HotelFlow.dto.guest.GuestResponseDTO;
 import br.com.HotelFlow.model.GuestModel;
 import br.com.HotelFlow.service.GuestService;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -52,7 +53,6 @@ public class GuestController {
 
         GuestModel toCreateGuest = toEntity(request);
         GuestModel createdGuest = service.register(toCreateGuest);
-
         GuestResponseDTO response = toDTO(createdGuest);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
@@ -78,11 +78,33 @@ public class GuestController {
                     GuestResponseDTO dto = toDTO(GuestModel);
                     return ResponseEntity.ok(dto);
                 })
-                .orElse(ResponseEntity.notFound().build());
+                .orElseThrow(() -> new EntityNotFoundException("Hóspede não encontrado com este ID"));
+    }
+
+    //PUT
+    @PutMapping("/{id}")
+    public ResponseEntity<GuestResponseDTO> update(@PathVariable Long id, @RequestBody GuestRequestDTO request){
+
+        GuestModel guestData = toEntity(request);
+        GuestModel updatedData = service.update(id, guestData);
+        GuestResponseDTO response = toDTO(updatedData);
+
+        return ResponseEntity.status(HttpStatus.OK).body(response);
+    }
+
+    //PATCH
+    @PatchMapping("/{id}")
+    public ResponseEntity<GuestResponseDTO> updatePartial(@PathVariable Long id, @RequestBody GuestRequestDTO request){
+
+        GuestModel guestData = toEntity(request);
+        GuestModel updatedData = service.update(id, guestData);
+        GuestResponseDTO response = toDTO(updatedData);
+
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
     //DELETE
-    @DeleteMapping("/{ID}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id){
         service.delete(id);
         return ResponseEntity.noContent().build();
