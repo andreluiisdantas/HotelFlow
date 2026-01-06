@@ -58,7 +58,7 @@ public class BookingStatusService {
 
     //DELETE
     @Transactional
-    public void Delete(Long id){
+    public void delete(Long id){
         if(!repository.existsById(id)){
             throw new EntityNotFoundException("Status não encontrado");
         }
