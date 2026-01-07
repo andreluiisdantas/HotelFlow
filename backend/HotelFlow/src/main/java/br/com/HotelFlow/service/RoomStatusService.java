@@ -21,7 +21,7 @@ public class RoomStatusService {
     //CREATE
     @Transactional
     public RoomStatusModel register(RoomStatusModel roomStatus){
-        if (repository.existsStatus(roomStatus.getStatus())){
+        if (repository.existsByStatus(roomStatus.getStatus())){
             throw new IllegalArgumentException("Já existe esse status cadastrado");
         }
         return repository.save(roomStatus);
@@ -46,7 +46,7 @@ public class RoomStatusService {
                 .orElseThrow(() -> new EntityNotFoundException("Status não encontrado"));
 
         if(data.getStatus() != null){
-            if(!statusExists.getStatus().equals(data.getStatus()) && repository.existsStatus(data.getStatus())){
+            if(!statusExists.getStatus().equals(data.getStatus()) && repository.existsByStatus(data.getStatus())){
                 throw new IllegalArgumentException("Status ja cadastrado");
             }
             statusExists.setStatus(data.getStatus());
