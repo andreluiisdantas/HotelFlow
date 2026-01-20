@@ -97,7 +97,7 @@ O sistema é organizado em pacotes que refletem as responsabilidades de negócio
 #### 1️⃣ Clone o repositório
 
 ```bash
-git clone https://github.com/seu-usuario/hotelflow.git
+git clone https://github.com/andreluiisdantas/HotelFlow.git
 cd hotelflow
 ```
 
