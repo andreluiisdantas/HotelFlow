@@ -1,133 +1,151 @@
-# 🏨 HotelFlow
+# 🏨 HotelFlow (Backend API)
 
-Um moderno **Sistema de Gerenciamento de Hotel (PMS)** web-based, construído com **Django** e **React**.
+Um **Sistema de Gerenciamento de Hotel (PMS)** focado no **backend**, construído com **Java** e **Spring Boot**.
 
-Este repositório contém o código-fonte do **HotelFlow**, um projeto de **PMS V1.0** focado em cobrir o ciclo de vida completo do hóspede: da **Reserva ao Check-out**.
+Este repositório contém o código-fonte da API do **HotelFlow**. O objetivo principal deste projeto é servir como um **laboratório de estudos** para aprofundamento em arquitetura Spring, boas práticas de desenvolvimento backend, modelagem de dados e criação de **APIs RESTful robustas**.
+
+> **Nota:** Este projeto é focado exclusivamente no **Back-end**. Não há interface gráfica (Frontend).  
+> A interação ocorre via ferramentas de teste de API como **Postman** ou **Insomnia**.
 
 ---
 
-## 🎯 Visão do Produto
+## 🎯 Objetivo de Estudo
 
-O **HotelFlow** visa atender **pequenos e médios hotéis e pousadas** que atualmente sofrem com sistemas de desktop antigos ou pagam caro por soluções em nuvem complexas demais.
+Embora simule um produto real para **pequenos e médios hotéis**, o foco é **técnico e educacional**. O projeto explora:
 
-A **V1.0** foca em fornecer ao staff do hotel (**Recepcionistas e Gerentes**) as ferramentas essenciais para gerenciar:
-
-- Reservas  
-- Disponibilidade de quartos  
-- Faturamento de hóspedes  
-- Operações de governança  
+- **Spring Boot 3+ / 4**
+  - Configuração
+  - Injeção de Dependência
+  - Ecossistema Spring
+- **Spring Data JPA**
+  - Mapeamento Objeto-Relacional (ORM)
+  - Abstração de repositórios
+- **Arquitetura em Camadas**
+  - Controller
+  - Service
+  - Repository
+  - Model
+- **API REST**
+  - Design de endpoints
+  - Tratamento de erros
+  - DTOs (Data Transfer Objects)
+- **Regras de Negócio**
+  - Reservas
+  - Disponibilidade
+  - Faturamento
 
 ---
 
 ## 🛠️ Stack Tecnológica
 
-- **Backend:** Django  
-- **API:** Django Rest Framework (DRF)  
-- **Frontend:** React  
+- **Linguagem:** Java 21  
+- **Framework:** Spring Boot  
 - **Banco de Dados:** PostgreSQL  
-- **Autenticação:** JWT (JSON Web Tokens)
+- **ORM:** Hibernate / Spring Data JPA  
+- **Gerenciador de Dependências:** Maven  
+- **Ferramentas:** Lombok, Spring DevTools  
 
 ---
 
-## 🏛️ Arquitetura do Backend (Apps Django)
+## 🏛️ Domínios do Sistema
 
-O projeto Django é organizado em *apps* desacoplados, cada um com uma responsabilidade de negócio clara:
+O sistema é organizado em pacotes que refletem as responsabilidades de negócio do hotel:
 
-- **core:** Configurações globais do Django (`settings.py`, `urls.py` principal).  
-- **users:** Gerencia os funcionários do hotel (Recepcionistas, Gerentes), autenticação via JWT e permissões de acesso.  
-- **guests:** Funciona como o "CRM" do hotel, gerenciando o perfil dos hóspedes (distintos dos funcionários).  
-  - Modelos: `Hospede`  
-- **property:** Gerencia o "inventário" físico do hotel.  
-  - Modelos: `TipoQuarto`, `Quarto`, `BloqueioQuarto`  
-- **rates:** Motor de precificação do hotel. Define quanto custa cada tipo de quarto.  
-  - Modelos: `PlanoTarifa`, `Tarifa`  
-- **reservations:** O “coração” do sistema. Orquestra a reserva, conectando `guests`, `property` e `rates`.  
-  - Modelos: `Reserva`  
-- **folio:** Gerencia a parte financeira da estadia (“conta corrente” do hóspede).  
-  - Modelos: `Folio`, `TransacaoFolio`  
+- **Users**
+  - Gerenciamento de funcionários
+  - Controle de acesso
+
+- **Guests**
+  - CRM do hotel
+  - Perfil e histórico dos hóspedes
+
+- **Property**
+  - Inventário físico do hotel
+  - *Entidades:*
+    - Tipos de Quarto
+    - Quartos
+    - Status de Governança
+
+- **Rates**
+  - Motor de precificação
+  - *Entidades:*
+    - Planos de Tarifas
+    - Preços por temporada
+
+- **Reservations**
+  - O coração do sistema
+  - Orquestra disponibilidade e bloqueio de quartos
+
+- **Folio**
+  - Gestão financeira da estadia
+  - Consumos, diárias e pagamentos
 
 ---
 
 ## 🚀 Começando (Setup e Instalação)
 
-Siga estes passos para configurar o ambiente de desenvolvimento.
-
 ### 🧩 Pré-requisitos
 
-- Python 3.10+  
-- Node.js 18+  
-- PostgreSQL em execução  
+- Java JDK 21
+- Maven (ou `mvnw`)
+- PostgreSQL em execução
 
 ---
 
-### ⚙️ 1. Configurando o Backend (Django)
+### ⚙️ Configuração
 
-Assumindo que o backend está na pasta `/backend`:
+#### 1️⃣ Clone o repositório
 
-#### Navegue até a pasta do backend:
 ```bash
-cd backend/
-Crie e ative um ambiente virtual:
-bash
-Copiar código
-# Linux/macOS
-python -m venv venv
-source venv/bin/activate
+git clone https://github.com/seu-usuario/hotelflow.git
+cd hotelflow
+```
 
-# Windows
-python -m venv venv
-.\venv\Scripts\activate
-Instale as dependências:
-bash
-Copiar código
-pip install -r requirements.txt
-Configure as variáveis de ambiente:
-(Copie .env.example para .env e preencha com seus dados do PostgreSQL)
+#### 2️⃣ Configure o Banco de Dados
 
-bash
-Copiar código
-cp .env.example .env
-Depois, edite o arquivo .env com suas credenciais do banco.
+Crie um banco de dados no PostgreSQL chamado **hotelflow**.
 
-Rode as migrações do banco:
-bash
-Copiar código
-python manage.py migrate
-Crie um superusuário (exemplo: Gerente "Maria"):
-bash
-Copiar código
-python manage.py createsuperuser
-Inicie o servidor do backend:
-bash
-Copiar código
-python manage.py runserver
-O backend estará rodando em:
-👉 http://localhost:8000
+Arquivo: `src/main/resources/application.properties`
 
-💻 2. Configurando o Frontend (React)
-Assumindo que o frontend está na pasta /frontend:
+```properties
+spring.datasource.url=jdbc:postgresql://localhost:5432/hotelflow
+spring.datasource.username=seu_usuario
+spring.datasource.password=sua_senha
+spring.jpa.hibernate.ddl-auto=update
+```
 
-Em um NOVO terminal, navegue até a pasta do frontend:
-bash
-Copiar código
-cd frontend/
-Instale as dependências:
-bash
-Copiar código
-npm install
-Inicie o servidor de desenvolvimento:
-bash
-Copiar código
-npm start
-O frontend estará rodando em:
-👉 http://localhost:3000
+#### 3️⃣ Compile e baixe as dependências
 
-🔖 Hashtags / Tópicos
-#Django #React #PostgreSQL #JWT #PMS #HotelFlow #Backend #Frontend #FullStack #HotelManagement
+```bash
+mvn clean install
+```
 
-yaml
-Copiar código
+#### 4️⃣ Execute a aplicação
+
+```bash
+mvn spring-boot:run
+```
+
+A API estará disponível em:
+
+```
+http://localhost:8080
+```
 
 ---
 
-Quer que eu adicione uma seção de **estrutura de pastas (tree)** ou **roadmap de versões (V1, V2 etc.)** também? Isso deixaria 
+## 🧪 Testando a API
+
+Como não há frontend, utilize ferramentas de teste de API:
+
+- Postman
+- Insomnia
+
+---
+
+## 🔖 Hashtags
+
+```
+#Java #SpringBoot #PostgreSQL #JPA #Backend #API #RestAPI
+#HotelManagement #StudyProject
+```
