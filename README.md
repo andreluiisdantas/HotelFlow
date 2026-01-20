@@ -2,7 +2,7 @@
 
 Um **Sistema de Gerenciamento de Hotel (PMS)** focado no **backend**, construído com **Java** e **Spring Boot**.
 
-Este repositório contém o código-fonte da API do **HotelFlow**. O objetivo principal deste projeto é servir como um **laboratório de estudos** para aprofundamento em arquitetura Spring, boas práticas de desenvolvimento backend, modelagem de dados e criação de **APIs RESTful robustas**.
+Este repositório contém o código-fonte da API do **HotelFlow**. O objetivo principal deste projeto é servir como um **projeto de estudos** para aprofundamento em arquitetura Spring, boas práticas de desenvolvimento backend, modelagem de dados e criação de **APIs RESTful robustas**.
 
 > **Nota:** Este projeto é focado exclusivamente no **Back-end**. Não há interface gráfica (Frontend).  
 > A interação ocorre via ferramentas de teste de API como **Postman** ou **Insomnia**.
