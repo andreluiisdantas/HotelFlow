@@ -143,9 +143,6 @@ Como não há frontend, utilize ferramentas de teste de API:
 
 ---
 
-## 🔖 Hashtags
+## 🚧 Em construção
 
-```
-#Java #SpringBoot #PostgreSQL #JPA #Backend #API #RestAPI
-#HotelManagement #StudyProject
-```
+O projeto ainda não foi finalizado!
