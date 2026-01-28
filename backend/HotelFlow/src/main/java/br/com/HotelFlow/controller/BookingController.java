@@ -58,13 +58,6 @@ public class BookingController {
                     .orElseThrow(() -> new EntityNotFoundException("Plano de tarifa não encontrado")));
         }
 
-        // Definir um status padrão se não vier na lógica, mas aqui assumo que pode haver um status inicial ou busca
-        // Como o DTO não tem status, normalmente se define o 'Pendente'. Vou buscar o primeiro ou injetar lógica se houvesse ID.
-        // Pelo padrão, vou assumir que há uma lógica de negócio ou um ID fixo, mas para seguir o modelo vou deixar null ou buscar um padrão se necessário.
-        // Visto que o DTO não envia o status, vou omitir a setagem aqui ou setar um default hardcoded se soubesse o ID.
-        // Ajuste: O modelo BookingModel tem 'bookingStatus' not null. Vou setar um default pegando do repo se existir, ou deixar falhar se for obrigatório e não passado.
-        // Como não tem no DTO, vou assumir que o Service ou Banco resolve, ou buscar o ID 1 provisoriamente.
-        // Melhor: Buscar status "Pendente" ou similar. Vou buscar pelo ID 1 para exemplo.
         booking.setBookingStatus(bookingStatusRepository.findById(1L)
                 .orElseThrow(() -> new EntityNotFoundException("Status de reserva padrão não encontrado")));
 
