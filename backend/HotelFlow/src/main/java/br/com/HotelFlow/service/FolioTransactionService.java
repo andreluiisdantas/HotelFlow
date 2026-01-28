@@ -46,7 +46,6 @@ public class FolioTransactionService {
             transactionExists.setFolio(data.getFolio());
         }
 
-        // Mock update amount se viesse no DTO, mas DTO só tem folioId
         if(data.getAmount() != null){
             transactionExists.setAmount(data.getAmount());
         }
